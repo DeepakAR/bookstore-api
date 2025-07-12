@@ -22,11 +22,11 @@ def create_book(title,author,price):
     books.append(new_book)
     return new_book
 
-print("adding a book")
-print(create_book("the power of now","Eckhart Tolle",350))
+#print("adding a book")
+#print(create_book("the power of now","Eckhart Tolle",350))
 
-print("final books list")
-print(books)
+#print("final books list")
+#print(books)
 
 
 
@@ -38,7 +38,27 @@ def delete(book_id):
         else:
             return {"error":f"book with id {book_id} not found"}
         
-print("checking delete function")
-print(delete(1))
-print(books)
+#print("checking delete function")
+#print(delete(1))
+#print(books)
     
+
+
+
+def search_book(query):
+    if not query:
+        return {"error":"search query is empty"}
+    query_lower=query.lower()
+    results=[]
+
+    for book in books:
+        if query_lower in book["title"].lower() or query_lower in book["author"].lower():
+            results.append(book)
+        
+    if not results:
+        return {'error':f"no book found matching {query}"}
+    return results
+
+print("checking search fucntion")
+print(search_book("Atomic habits"))
+print(books)
