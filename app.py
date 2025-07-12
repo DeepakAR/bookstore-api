@@ -27,3 +27,18 @@ print(create_book("the power of now","Eckhart Tolle",350))
 
 print("final books list")
 print(books)
+
+
+
+def delete(book_id):
+    for index,book in enumerate (books):
+        if book["id"]==book_id:
+            deleted_book=books.pop(index)
+            return {"message": "deleted book" , "book": deleted_book}
+        else:
+            return {"error":f"book with id {book_id} not found"}
+        
+print("checking delete function")
+print(delete(1))
+print(books)
+    
