@@ -59,6 +59,18 @@ def search_book(query):
         return {'error':f"no book found matching {query}"}
     return results
 
-print("checking search fucntion")
-print(search_book("Atomic habits"))
+#print("checking search fucntion")
+#print(search_book("Atomic habits"))
+#print(books)
+
+def update_book(book_id,updated_data):
+    for book in books:
+        if book["id"]==book_id:
+            for key in updated_data:
+                if key in book:
+                    book[key]=updated_data[key]
+            return {"message":"Book updated","book":book}
+    return {"error":"book not found"}
+
+print(update_book(1,{"title":"updated book","price":249}))
 print(books)
